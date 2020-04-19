@@ -1,22 +1,9 @@
 ---
 - hosts: all
   become: yes
+  user: root
+  vars:
+          - gitlab_external_url: "https://gitlab.local/"
   roles:
-        - ekultails.ansible_role_gitea
-  tasks:
-        - name: Install pip
-          apt:
-                update_cache: yes
-                name: python3-pip
-        
-        - name: Install buildbot
-          shell: pip3 install buildbot[bundle]
+          - geerlingguy.gitlab
 
-        - name: Create master server
-          shell: buildbot create-master master
-        
-        - name: Move config
-          shell: mv master/master.cfg.sample master/master.cfg
-
-        - name: Start buildbot
-          shell: buildbot start master

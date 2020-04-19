@@ -1,2 +1,7 @@
+---
 # Roles for all servers
-- src: ekultails.ansible_role_gitea
+collections: 
+        - crivetimihai.virtualization
+roles:
+        - src: geerlingguy.gitlab
+        - src: geerlingguy.nfs
