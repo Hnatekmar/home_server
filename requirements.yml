@@ -4,4 +4,3 @@ collections:
         - crivetimihai.virtualization
 roles:
         - src: geerlingguy.gitlab
-        - src: geerlingguy.nfs
