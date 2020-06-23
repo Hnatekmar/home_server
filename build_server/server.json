@@ -1,0 +1,20 @@
+{
+	"provisioners": [
+		{
+			"type": "shell",
+			"inline": "apt-get update && apt-get install go-server"
+		},
+		{
+			"type": "shell",
+			"inline": "systemctl enable go-server && systemctl start go-server"
+		}
+	],
+	"builders": [
+		{
+			"type": "lxd",
+			"name": "buildServer",
+			"image": "buildServerBase",
+			"output_image": "buildServer"
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{
+	"provisioners": [
+		{
+			"type": "shell",
+			"inline": "apt-get update && apt-get install -y python3-pip && pip3 install ansible"
+		},
+		{
+			"type": "ansible-local",
+			"playbook_file": "install_base.yml"
+		}
+	],
+	"builders": [
+		{
+			"type": "lxd",
+			"name": "buildServer",
+			"image": "images:debian/buster",
+			"output_image": "buildServerBase"
+		}
+	]
+}

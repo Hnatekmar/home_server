@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: yes
+  user: root
+  tasks: 
+    - name: Update apt and install curl
+      apt:
+        update_cache: no
+        name: curl 
+
+    - name: Prepare apt for gocd
+      shell: |
+        echo "deb https://download.gocd.org /" | tee /etc/apt/sources.list.d/gocd.list
+        curl https://download.gocd.org/GOCD-GPG-KEY.asc | apt-key add -

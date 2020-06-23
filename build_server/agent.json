@@ -1,0 +1,20 @@
+{
+	"provisioners": [
+		{
+			"type": "shell",
+			"inline": "apt-get update && apt-get install go-agent"
+		},
+		{
+			"type": "shell",
+			"inline": "systemctl enable go-agent && systemctl start go-agent"
+		}
+	],
+	"builders": [
+		{
+			"type": "lxd",
+			"name": "buildAgent",
+			"image": "buildServerBase",
+			"output_image": "buildAgent"
+		}
+	]
+}
